@@ -22,7 +22,7 @@ bool ESP8266_Tiny::openConnection(
   const char *startCmd[] = {
         "AT+CIPSTART=", channel, channel != NULL? "," : NULL, "\"",
         protocol, "\",\"", host, "\",", port };
-  return sendExpect(startCmd, 8, ">\r");
+  return sendExpect(startCmd, 9, ">\r");
 }
 
 bool ESP8266_Tiny::closeConnection(const char *channel) {
@@ -59,6 +59,7 @@ int ESP8266_Tiny::sendDataGetResponse(
   if (NULL == response) {
     return 0;
   }
+  response[0] = '\0';
   return readIncoming(channel, response, response_len, deadline);
 }
 

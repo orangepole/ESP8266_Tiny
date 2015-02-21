@@ -14,8 +14,9 @@
 #if defined(__AVR_ATtiny85__)  // add more here; without hardware serial
   #define DEBUG_PRINT(...)
   #define DEBUG_PRINTLN(...)
+  #undef _WANT_DEBUG
 #else
-  // All data sent and received will be written to hardawre serial output.
+  // All data sent and received will be written to hardware serial output.
   #ifdef _WANT_DEBUG
     #define DEBUG_PRINT(...) Serial.print(__VA_ARGS__);
     #define DEBUG_PRINTLN(...) Serial.println(__VA_ARGS__);
